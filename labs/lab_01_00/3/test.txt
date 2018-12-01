@@ -1,0 +1,20 @@
+test ¹1
+input: height 187
+       chest 90
+       mass 67
+output: normal weight 70.125000
+	index of weight 19.159826
+
+test ¹2
+input: height 200
+       chest 100
+       mass 80
+output: normal weight 83.333336
+	index of weight 20.000000
+
+test ¹3
+input: height 173
+       chest 77
+       mass 58
+output: normal weight 55.504166
+	index of weight 19.379196

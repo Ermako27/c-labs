@@ -1,0 +1,11 @@
+test ¹1
+input number: 12345
+output: 1 2 3 4 5
+
+test ¹2
+input number 948352345
+output: 9 4 8 3 5 2 3 4 5
+
+test ¹3
+input number: 3245
+output: 3 2 4 5

@@ -1,0 +1,28 @@
+test 1:
+input: x = 0.5, eps = 0.001
+output: 
+Approximate value of the function s(x): 1.154629
+The exact value of the function f(x): 1.154701
+Absolute error: 0.000072
+Relative error: 0.000062
+
+test 2:
+input x = 1
+output: Wrong value
+
+test 3:
+input: x = 0.2, eps = 0.0000001
+output: 
+Approximate value of the function s(x): 1.020621
+The exact value of the function f(x): 1.020621
+Absolute error: 0.000000
+Relative error: 0.000000
+
+test 4:
+input: x = r
+output: Wrong value
+
+test 5:
+input: x = 0.5 eps = t
+output: Wrong value
+

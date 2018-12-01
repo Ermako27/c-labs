@@ -1,0 +1,22 @@
+Dr. Memory version 2.0.0 build 1 built on Aug 29 2017 01:21:09
+Dr. Memory results for pid 9550: "main.exe"
+Recorded 17 suppression(s) from default /home/ermak/DrMemory-Linux-2.0.0-RC1/bin64/suppress-default.txt
+
+===========================================================================
+FINAL SUMMARY:
+
+DUPLICATE ERROR COUNTS:
+
+SUPPRESSIONS USED:
+
+NO ERRORS FOUND:
+      0 unique,     0 total unaddressable access(es)
+      0 unique,     0 total uninitialized access(es)
+      0 unique,     0 total invalid heap argument(s)
+      0 unique,     0 total warning(s)
+      0 unique,     0 total,      0 byte(s) of leak(s)
+      0 unique,     0 total,      0 byte(s) of possible leak(s)
+ERRORS IGNORED:
+     15 unique,    19 total,  17063 byte(s) of still-reachable allocation(s)
+         (re-run with "-show_reachable" for details)
+Details: /media/ermak/94B2DAA4B2DA8A5E/C_projects/iu7-cprog-labs-2017-ermakovmaksim/rk_2.5/DrMemory-main.exe.9550.000/results.txt

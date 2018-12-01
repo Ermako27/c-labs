@@ -1,0 +1,8 @@
+legend 103
+king 115
+atlantida 116
+ono 120
+logan 137
+kingsman 141
+
+

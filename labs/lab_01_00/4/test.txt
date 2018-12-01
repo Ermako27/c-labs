@@ -1,0 +1,11 @@
+test ¹1
+input: 90
+output: 2
+
+test ¹2
+input: 120
+output: 2
+
+test ¹3
+input 400
+output: 8

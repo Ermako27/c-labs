@@ -1,0 +1,202 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <math.h>
+
+#define OK 0
+#define INCORRECT 1
+#define UNEQUAL 2
+#define NOT_SQUARE 3
+
+// n - кол-во строк
+// м - кол-во столбцов
+
+
+void free_matrix_rows(float **data, int n)
+{
+    for (int i = 0; i < n; i++)
+       // free можно передать NULL
+       free(data[i]);
+
+    free(data);
+}
+
+float** allocate_matrix_rows(int n, int m, FILE *f)
+{
+    float num;
+    float **data = calloc(n, sizeof(float*));
+    if (!data)
+        return NULL;
+
+    for (int i = 0; i < n; i++)
+    {
+        data[i] = malloc(m * sizeof(float));
+        if (!data[i])
+        {
+            free_matrix_rows(data, n);
+            return NULL;
+        }
+        for(int j = 0; j < m; j++)
+        {
+            fscanf(f, "%f", &num);
+            data[i][j] = num;
+        }
+    }
+
+    return data;
+}
+
+// сравнение получившейся матрицы и ожидаемого результата
+int compare(int n, int m, float *a[m], float *b[m])
+{
+	for (int i = 0; i < n; i++)
+	{
+		for (int j = 0; j < m; j++)
+		{
+			if (fabs(a[i][j] - b[i][j]) > 0.01)
+				return UNEQUAL;
+		}
+	}
+	return OK;
+}
+
+
+void print_matrix(int n, int m, float *a[m]) // функция печати массива
+{
+    for (int i = 0; i < n; i++)
+    {
+        for (int j = 0; j < m; j++)
+        {
+            if (fabs(a[i][j] - (int)a[i][j]) > 0)
+                printf("%.3f ", a[i][j]);
+            else if ((a[i][j] - (int)a[i][j]) == 0)
+                printf("%d ", (int)a[i][j]);
+            //printf("\n");
+        }
+        printf("\n");
+    }
+    printf("\n");
+}
+
+
+float determ(float** Arr, int size, int m)
+{
+        if (size != m)
+            return INCORRECT;
+        int i,j;
+        float det=0;
+        float** matr;
+        if(size==1)
+        {
+                det=Arr[0][0];
+        }
+        else if(size==2)
+        {
+                det=Arr[0][0]*Arr[1][1]-Arr[0][1]*Arr[1][0];
+        }
+        else
+        {
+                matr = calloc((size-1),sizeof(float*));
+                for(i=0;i<size;++i)
+                {
+                        for(j=0;j<size-1;++j)
+                        {
+                                if(j<i) 
+                                        matr[j]=Arr[j];
+                                else
+                                        matr[j]=Arr[j+1];
+                        }
+                        det+=pow((float)-1, (i+j))*determ(matr, size-1,m-1)*Arr[i][size-1];
+                }
+                free(matr);
+                
+        }
+        
+        return det;
+}
+
+void test_determinant(void)
+{
+    
+	int err_count = 0;
+    float **matrix;
+    FILE *f;
+    int n,m;
+
+
+
+// матрица 3х3
+    f = fopen("test1.txt", "r");
+    fscanf(f,"%d",&n);
+    fscanf(f,"%d",&m);
+    matrix = allocate_matrix_rows(n,m,f);
+    if ( determ(matrix,n,m) != 1)
+    {
+        printf("1\n");
+        err_count++;
+    }
+
+// матрица 4х4
+
+    f = fopen("test2.txt", "r");
+    fscanf(f,"%d",&n);
+    fscanf(f,"%d",&m);
+    matrix = allocate_matrix_rows(n,m,f);
+    if ( determ(matrix,n,m) != 85376)
+    {
+        printf("2\n");
+        err_count++;
+    }
+
+// матрица 5х5 
+    f = fopen("test3.txt", "r");
+    fscanf(f,"%d",&n);
+    fscanf(f,"%d",&m);
+    matrix = allocate_matrix_rows(n,m,f);
+    if ( determ(matrix,n,m) != -5713476)
+    {
+        printf("3\n");
+        err_count++;
+    }
+
+// матрица 2х2
+    f = fopen("test4.txt", "r");
+    fscanf(f,"%d",&n);
+    fscanf(f,"%d",&m);
+    matrix = allocate_matrix_rows(n,m,f);
+    if ( determ(matrix,n,m) != -2)
+    {
+        printf("4\n");
+        err_count++;
+    }
+
+// матрица из 1 элемента
+    f = fopen("test5.txt", "r");
+    fscanf(f,"%d",&n);
+    fscanf(f,"%d",&m);
+    matrix = allocate_matrix_rows(n,m,f);
+    if ( determ(matrix,n,m) != 1828)
+    {
+        printf("5\n");
+        err_count++;
+    }
+
+// не квадратная матирца 
+    f = fopen("test6.txt", "r");
+    fscanf(f,"%d",&n);
+    fscanf(f,"%d",&m);
+    matrix = allocate_matrix_rows(n,m,f);
+    if ( determ(matrix,n,m) != INCORRECT)
+    {
+        printf("6\n");
+        err_count++;
+    }    
+    printf("%s: %s\n", __func__, err_count ? "FAILED" : "OK");
+
+}
+
+int main(void)
+{
+	test_determinant();
+	return 0;
+}
+

@@ -1,0 +1,6 @@
+in_1.txt  92.68%
+in_2.txt  92.68%
+in_3.txt  92.68%
+in_4.txt  95.12%
+in_5.txt  97.56%
+no file   100.00%

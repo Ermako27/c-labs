@@ -1,0 +1,14 @@
+test ¹1
+input:  grounds 5, 11
+	height 4
+output: 26.000000
+
+test ¹2
+input:  grounds 17 11
+	height 6
+output: 41.416409
+
+test ¹3 
+input:  grounds 5 19
+	height 10
+output: 48.413109

@@ -1,0 +1,3 @@
+privet 100
+poka 200
+priva 300

@@ -1,0 +1,7 @@
+fff 100
+aaa 500
+eee 400
+bbb 200
+ccc 300
+ggg 600
+ddd 700
